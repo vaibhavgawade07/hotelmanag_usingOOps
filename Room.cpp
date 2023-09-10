@@ -112,7 +112,7 @@ public:
 
 int main() {
     std::cout << "\n===== Hotel Management System =====" << std::endl;
-    std::cout << "\n===Welcome to the Shubham Hotel. How may I help you!===" << std::endl;
+    std::cout << "\n===Welcome to the Hotel. How may I help you!===" << std::endl;
     std::cout << "1. Display Room Details" << std::endl;
     std::cout << "2. Display Room Availability" << std::endl;
     std::cout << "3. Book Room" << std::endl;

@@ -2,10 +2,12 @@
 #include <string>
 #include <limits>
 
+using namespace std;
+
 class Room {
 private:
     int roomNumber;
-    std::string customer;
+    string customer;
     double totalAmount = 0;
     int roomprice = 1000;
     int roomprice2 = 2000;
@@ -13,90 +15,90 @@ private:
 
 public:
     void roomdetails() {
-        std::cout << "Press Number from 1-3 to continue info of the room:" << std::endl;
+        cout << "Press Number from 1-3 to continue info of the room:" << endl;
         int choice1;
-        std::cin >> choice1;
+        cin >> choice1;
         switch (choice1) {
             case 1:
-                std::cout << "Single" << std::endl;
-                std::cout << "Price- Rs " << roomprice << std::endl;
-                std::cout << "Ac - No" << std::endl;
+                cout << "Single" << endl;
+                cout << "Price- Rs " << roomprice << endl;
+                cout << "Ac - No" << endl;
                 break;
             case 2:
-                std::cout << "Double" << std::endl;
-                std::cout << "Price- Rs " << roomprice2 << std::endl;
-                std::cout << "Ac - No" << std::endl;
+                cout << "Double" << endl;
+                cout << "Price- Rs " << roomprice2 << endl;
+                cout << "Ac - No" << endl;
                 break;
             case 3:
-                std::cout << "Luxury" << std::endl;
-                std::cout << "Price- Rs " << roomprice3 << std::endl;
-                std::cout << "Ac - Yes" << std::endl;
-                std::cout << "Free Breakfast" << std::endl;
+                cout << "Luxury" << endl;
+                cout << "Price- Rs " << roomprice3 << endl;
+                cout << "Ac - Yes" << endl;
+                cout << "Free Breakfast" << endl;
                 break;
             default:
-                std::cout << "Invalid data" << std::endl;
+                cout << "Invalid data" << endl;
         }
     }
 
     void Availability(int roomno) {
         if (roomno < 4 || roomno == 2 || roomno == 3) {
-            std::cout << "Available" << std::endl;
+            cout << "Available" << endl;
         } else if (roomno >= 4) {
-            std::cout << "Room doesn't Exist!!" << std::endl;
+            cout << "Room doesn't Exist!!" << endl;
         } else {
-            std::cout << "Room not Available" << std::endl;
+            cout << "Room not Available" << endl;
         }
     }
 
-    void roombook(int roomNumber, const std::string& customer) {
+    void roombook(int roomNumber, const string& customer) {
         this->roomNumber = roomNumber;
         this->customer = customer;
-        std::cout << "The room no " << roomNumber << " booked by " << customer << std::endl;
+        cout << "The room no " << roomNumber << " booked by " << customer << endl;
     }
 
     void orderFood(int roomNumber) {
-        std::cout << "\n==========\n   Menu:  \n==========\n";
-        std::string menuItems[] = {"Sandwich", "Pasta", "Noodles", "Coke"};
+        cout << "\n==========\n   Menu:  \n==========\n";
+        string menuItems[] = {"Sandwich", "Pasta", "Noodles", "Coke"};
         double menuPrices[] = {50, 60, 70, 30};
-        std::cout << "Item\tPrice" << std::endl;
+        cout << "Item\tPrice" << endl;
         for (int i = 0; i < sizeof(menuItems) / sizeof(menuItems[0]); i++) {
-            std::cout << i + 1 << ". " << menuItems[i] << "\tRs." << menuPrices[i] << std::endl;
+            cout << i + 1 << ". " << menuItems[i] << "\tRs." << menuPrices[i] << endl;
         }
 
         double totalAmount = 0;
         while (true) {
-            std::cout << "Enter item number (1-4): ";
+            cout << "Enter item number (1-4): ";
             int itemNumber;
-            std::cin >> itemNumber;
+            cin >> itemNumber;
             if (itemNumber < 1 || itemNumber > sizeof(menuItems) / sizeof(menuItems[0])) {
-                std::cout << "Invalid item number. Try again." << std::endl;
+                cout << "Invalid item number. Try again." << endl;
                 continue;
             }
 
-            std::cout << "Enter quantity: ";
+            cout << "Enter quantity: ";
             int quantity;
-            std::cin >> quantity;
+            cin >> quantity;
             if (quantity <= 0) {
-                std::cout << "Invalid quantity. Try again." << std::endl;
+                cout << "Invalid quantity. Try again." << endl;
                 continue;
             }
 
             totalAmount += menuPrices[itemNumber - 1] * quantity;
-            std::cout << "Do you want to order anything else? (y/n): ";
+            cout << "Do you want to order anything else? (y/n): ";
             char wish;
-            std::cin >> wish;
+            cin >> wish;
 
             if (wish == 'n' || wish == 'N') {
                 break;
             }
         }
-        std::cout << "Your bill: Rs" << totalAmount << std::endl;
+        cout << "Your bill: Rs" << totalAmount << endl;
     }
 
     void totalbill() {
-        std::cout << "Sir which room" << std::endl;
+        cout << "Sir which room" << endl;
         int romno;
-        std::cin >> romno;
+        cin >> romno;
         double totalBil = 0;
         if (romno == 1) {
             totalBil = roomprice + totalAmount;
@@ -105,59 +107,59 @@ public:
         } else if (romno == 3) {
             totalBil = roomprice3 + totalAmount;
         }
-        std::cout << "Your Total bill. Rs" << totalBil << std::endl;
-        std::cout << "===Thanks for Visit.=== Visit Again===" << std::endl;
+        cout << "Your Total bill. Rs" << totalBil << endl;
+        cout << "===Thanks for Visit.=== Visit Again===" << endl;
     }
 };
 
 int main() {
-    std::cout << "\n===== Hotel Management System =====" << std::endl;
-    std::cout << "\n===Welcome to the Hotel. How may I help you!===" << std::endl;
-    std::cout << "1. Display Room Details" << std::endl;
-    std::cout << "2. Display Room Availability" << std::endl;
-    std::cout << "3. Book Room" << std::endl;
-    std::cout << "4. Order Food" << std::endl;
-    std::cout << "5. Bill" << std::endl;
+    cout << "\n===== Hotel Management System =====" << endl;
+    cout << "\n===Welcome to the Hotel. How may I help you!===" << endl;
+    cout << "1. Display Room Details" << endl;
+    cout << "2. Display Room Availability" << endl;
+    cout << "3. Book Room" << endl;
+    cout << "4. Order Food" << endl;
+    cout << "5. Bill" << endl;
 
     Room ob;
 
-    std::string Naam;  // Declare the variable outside the switch
+    string Naam;  // Declare the variable outside the switch
 
     while (true) {
         int choice;
-        std::cin >> choice;
+        cin >> choice;
         switch (choice) {
             case 1:
-                std::cout << "Display room Details" << std::endl;
+                cout << "Display room Details" << endl;
                 ob.roomdetails();
                 break;
             case 2:
-                std::cout << "Enter room from 1-5" << std::endl;
+                cout << "Enter room from 1-5" << endl;
                 int roomno;
-                std::cin >> roomno;
+                cin >> roomno;
                 ob.Availability(roomno);
                 break;
             case 3:
-                std::cout << "Enter room No to book" << std::endl;
+                cout << "Enter room No to book" << endl;
                 int no;
-                std::cin >> no;
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Consume the newline character left in the input buffer
-                std::cout << "Enter Name-";
-                std::getline(std::cin, Naam);
+                cin >> no;
+                cin.ignore(1000, '\n'); // Consume the newline character left in the input buffer
+                cout << "Enter Name-";
+                getline(cin, Naam);
                 ob.roombook(no, Naam);
                 break;
             case 4:
-                std::cout << "Enter room Number" << std::endl;
+                cout << "Enter room Number" << endl;
                 int roomno1;
-                std::cin >> roomno1;
+                cin >> roomno1;
                 ob.orderFood(roomno1);
-                std::cout << "Thanks for Order." << std::endl;
+                cout << "Thanks for Order." << endl;
                 break;
             case 5:
                 ob.totalbill();
                 break;
             default:
-                std::cout << "Invalid" << std::endl;
+                cout << "Invalid" << endl;
         }
     }
 
